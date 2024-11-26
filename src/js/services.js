@@ -29,5 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
 					container.appendChild(card);
 				});
 			}
+		})
+		.catch((error) => {
+			const container = document.getElementById("services-container");
+			document.querySelector(".cards").style.margin = "60px 0 20px 0";
+			container.innerHTML = `<p class='description not-services'>Ошибка при получении данных</p>`;
 		});
 });

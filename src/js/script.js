@@ -1,18 +1,15 @@
+const btnFixed = document.querySelector(".btn-fixed");
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal__content");
+const modalButton = document.querySelector(".modal__button");
+const header = document.querySelector("header");
 let menuBtn = document.querySelector(".menu-btn");
 let menu = document.querySelector(".menu");
 let body = document.querySelector("body");
 menuBtn.addEventListener("click", function () {
 	menuBtn.classList.toggle("active");
 	menu.classList.toggle("active");
-	body.classList.toggle("body-scroll");
 });
-
-
-const btnFixed = document.querySelector(".btn-fixed");
-const modal = document.querySelector(".modal");
-const modalContent = document.querySelector(".modal__content");
-const modalButton = document.querySelector(".modal__button");
-const header = document.querySelector("header");
 
 let scrollWidth = window.innerWidth - body.clientWidth;
 
@@ -42,11 +39,21 @@ btnFixed.addEventListener("click", function () {
 	addWidthScroll();
 });
 
+modal.addEventListener("click", function (event) {
+	if (event.currentTarget === modal) {
+		removeWidthScroll();
+		interactModal();
+	}
+});
+
+modalContent.addEventListener("click", function (event) {
+	event.stopPropagation();
+});
+
 modalButton.addEventListener("click", function () {
 	removeWidthScroll();
 	interactModal();
 });
-
 
 const phoneInputs = document.querySelectorAll("#tel");
 
